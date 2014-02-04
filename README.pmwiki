@@ -1,0 +1,82 @@
+>>recipeinfo<<
+Summary: Lets Lua scripts dynamically generate parts of your wiki page
+Version: 2014-02-03
+Prerequisites: PmWiki 2.2 or later; Any modern JavaScript-enabled browser
+Status: Beta
+Download: Attach:LuaExecute.zip
+Maintainer: [[~Felipe Daragon]]
+Users: {$Users} ([[{$FullName}-Users|view]] / [[{$FullName}-Users?action=edit|edit]])
+Categories: [[!Markup]] [[!Math]]
+Discussion: [[Cookbook/LuaExecute-Talk]]
+>><<
+!! Questions answered by this recipe
+
+[[#desc]]
+!! Description
+(:Description This recipe lets you execute Lua scripts in PmWiki pages. It is as simple as writing your Lua code inside the &#40;:lua:&#41; ... &#40;:luaend:&#41; markups. The recipe executes the Lua code and displays its output in place of the &#40;:lua:&#41; ... &#40;:luaend:&#41; wiki text. :){$Description}
+
+The Lua script is executed client-side, by the visitor's web browser, after the page load. This makes use of a Lua 5.2 virtual machine written in JavaScript%newwin%[[https://github.com/kripken/lua.vm.js|#]]%%. By default, no HTML is allowed in the output - the output data is escaped before being displayed.
+
+See a live demo at %newwin%[[http://www.206labs.com/f/?n=PmWikiRecipes.LuaExecute]]%%
+
+[[#whatislua]]
+!!!What is Lua
+Lua is a powerful, fast, lightweight, embeddable scripting language. The language combines simple procedural syntax with powerful data description constructs based on associative arrays and extensible semantics. Lua is dynamically typed, runs by interpreting bytecode for a register-based virtual machine, and has automatic memory management with incremental garbage collection, making it ideal for configuration, scripting, and rapid prototyping.
+
+More information is available at the official website at %newwin%[[http://www.lua.org]]%%.
+
+[[#install]]
+!! Installation
+Download Attach:LuaExecute.zip, unpack the files to the associated directories, and add to config.php:
+->[@include_once("cookbook/luaexecute.php");@]
+
+[[#config]]
+!! Configuration
+Add configuration settings '''before''' include of the script file!
+
+You can add an initialization Lua script with custom functions:
+: [@$LuaConfig['initscript'] = file_get_contents('cookbook/luaexecute.lua');@] : The default is empty.
+
+By default, the Lua output data is escaped before being displayed, and the ability to call JS code from within Lua is disabled, but you can turn off this safe mode:
+: [@$LuaConfig['safemode'] = false;@] : The default is '''true'''. Keep in mind that disabling the safe mode is dangerous: Lua code inserted by a malicious visitor could be quite harmful. Only disable it on a wiki if you can trust all your editors.
+
+[[#usage]]
+!! Usage Example
+
+>>frame<<
+[@
+(:lua:)
+print('Hello from '.._VERSION..'!')
+bye = string.reverse('!eyB')
+print('Pi is: '..math.pi)
+print(bye)
+(:luaend:)
+@]
+>><<
+
+This will output the following:
+
+>>frame<<
+Hello from Lua 5.2!\\
+Pi is: 3.1415926535898\\
+Bye!
+>><<
+
+[[#seealso]]
+!! See also
+* [[Cookbook/JavaScript-Editable]]
+* [[Cookbook/PHPExecute]]
+
+[[#contributors]]
+!! Contributors
+* [[~Felipe Daragon]]
+
+[[#releasenotes]]
+!! Releases Notes
+%define=history apply=list class=historylist list-style=none margin-left=9em%
+%define=hdt float=left font-weight=bold width=8em margin-left=-8em%
+* %history%%hdt% 2014-02-03 %% Initial release.
+
+[[#comments]]
+!! Comments
+See discussion at [[{$Name}-Talk]]
