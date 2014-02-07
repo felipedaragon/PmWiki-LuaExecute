@@ -44,9 +44,9 @@ var LuaExecutor =
             {
                 LuaExecutor.outputElement = l[i];
                 var luacode = l[i].getAttribute(LuaExecutor.scriptAttr);
-                luacode = LuaExecutor.base64Decode(luacode);
+                luacode = initscript + ' ' + LuaExecutor.base64Decode(luacode);
                 if (LuaExecutor.settings.disableJS == true) {
-                    luacode = 'js = {} ' + initscript + ' ' + luacode;
+                    luacode = 'js = {} ' + luacode;
                 }
                 Lua.execute(luacode);
             }

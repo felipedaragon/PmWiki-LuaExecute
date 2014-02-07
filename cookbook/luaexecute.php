@@ -7,7 +7,7 @@
  * 
  * License: MIT
  */
-$RecipeInfo['Lua']['1.0'] = '2014-02-03';
+$RecipeInfo['LuaExecute']['1.0.1'] = '2014-02-07';
 
 // Defaults
 SDVA($LuaConfig, array(
