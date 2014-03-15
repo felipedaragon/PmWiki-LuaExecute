@@ -1,6 +1,6 @@
 >>recipeinfo<<
 Summary: Lets Lua scripts dynamically generate parts of your wiki page
-Version: 1.0.1, 2014-02-07
+Version: 1.0.2, 2014-03-15
 Prerequisites: PmWiki 2.2 or later; Any modern JavaScript-enabled browser
 Status: Beta
 Download: Attach:LuaExecute.zip
@@ -75,6 +75,7 @@ Bye!
 !! Releases Notes
 %define=history apply=list class=historylist list-style=none margin-left=9em%
 %define=hdt float=left font-weight=bold width=8em margin-left=-8em%
+* %history%%hdt% 1.0.2, 2014-03-15 %% Moved JS files to thirdparty directory.
 * %history%%hdt% 1.0.1, 2014-02-07 %% Fix: Initialization script not working while in safe mode.
 * %history%%hdt% 1.0.0, 2014-02-03 %% Initial release.
 

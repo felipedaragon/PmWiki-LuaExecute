@@ -7,7 +7,7 @@
  * 
  * License: MIT
  */
-$RecipeInfo['LuaExecute']['1.0.1'] = '2014-02-07';
+$RecipeInfo['LuaExecute']['1.0.2'] = '2014-03-15';
 
 // Defaults
 SDVA($LuaConfig, array(
@@ -25,10 +25,10 @@ function InsertLuaHeader(){
      if ($initscript != '') $initscript = EncodeLuaScript($initscript);
      if ($LuaConfig['safemode'] == false) $script = "<script>LuaExecutor.enableSafeMode(false);</script>";
      $HTMLHeaderFmt['luahead'] = "
-  <script type='text/javascript' src='{$FarmPubDirUrl}/lua/luaexecute.js'></script>{$script}
+  <script type='text/javascript' src='{$FarmPubDirUrl}/thirdparty/luaexecute/luaexecute.js'></script>{$script}
   ";
      $HTMLFooterFmt['luafoot'] = "
-  <script type='text/javascript' src='{$FarmPubDirUrl}/lua/lua.vm.js'></script>
+  <script type='text/javascript' src='{$FarmPubDirUrl}/thirdparty/luaexecute/lua.vm.js'></script>
   <script>LuaExecutor.run('{$initscript}');</script>
   ";
     }
